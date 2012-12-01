@@ -13,4 +13,8 @@ describe Configus do
   it 'should have get value by key' do
     configus.email.should == 'test@test.com'
   end
+
+  it 'should have get value by key as hash' do
+    configus[:email].should == 'test@test.com'
+  end
 end

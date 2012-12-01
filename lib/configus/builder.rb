@@ -6,7 +6,8 @@ module Configus
   	end
 
   	def env(name, params = {}, &block)
-  	  @config[name] = Proxy.new(block)
+  	  b = Proxy.new(block)
+      @config[name] = b.config
   	end
 
     def config
