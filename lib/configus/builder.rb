@@ -3,16 +3,16 @@ module Configus
     def initialize(block) 
       @config = {}
       instance_eval &block
-	end
+  	end
 
-	def env(name, params = {}, &block)
-	  proxy = Proxy.new(block)
-	  @config[name] = proxy.config
-	end
+  	def env(name, params = {}, &block)
+  	  @config[name] = Proxy.new(block)
+  	end
 
-	def config
-	  @config
-	end
+    def config
+      @config
+    end
+
   end
   
 end
