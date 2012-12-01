@@ -8,8 +8,7 @@ module Configus
   autoload 'Config', 'configus/config'
 
 	def self.build(current_env, &block)
-		b = Configus::Builder.new(block)
-		@config = b.config
+		@config = Builder.build(block)
     @current_env = current_env
 	end
 

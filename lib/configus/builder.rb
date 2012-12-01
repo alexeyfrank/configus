@@ -1,18 +1,21 @@
 module Configus
-  class Builder 
+  class Builder
+
+    attr_reader :config
+
     def initialize(block) 
       @config = {}
       instance_eval &block
   	end
 
-  	def env(name, params = {}, &block)
-  	  b = Proxy.new(block)
-      @config[name] = b.config
-  	end
+    def self.build(block)
+      b = new(block)
+      b.config
+    end  
 
-    def config
-      @config
-    end
+  	def env(name, params = {}, &block)
+      @config[name] = Proxy.build(block)
+  	end
 
   end
   
